@@ -31,7 +31,9 @@ subtle-encoding = { workspace = true }
 # ibc dependencies
 ibc-proto           = { workspace = true }
 ibc-primitives      = { workspace = true }
-ics23               = { version = "0.12", default-features = false, features = [ "host-functions" ] }
+# ics23               = { version = "0.12", default-features = false, features = [ "host-functions" ] }
+ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "prost-14.1", default-features = false, features = [ "host-functions" ]  }
+
 ibc-core-host-types = { workspace = true }
 
 # parity dependencies

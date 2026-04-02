@@ -33,7 +33,7 @@ ibc-proto = { workspace = true }
 ibc-query = { workspace = true }
 
 # basecoin dependencies
-basecoin-store = { version = "0.2.0" }
+basecoin-store = { path = "../../basecoin-rs/basecoin/store" }
 
 # cosmos dependencies
 tendermint         = { workspace = true }
@@ -75,3 +75,6 @@ parity-scale-codec = [
   "ibc/parity-scale-codec",
   "ibc-proto/parity-scale-codec",
 ]
+
+[patches.crates-io]
+basecoin-store = { path = "../../basecoin-rs/basecoin/store" }

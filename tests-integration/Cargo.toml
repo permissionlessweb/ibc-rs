@@ -29,7 +29,7 @@ ibc-query                   = { workspace = true }
 ibc-testkit                 = { workspace = true }
 
 # basecoin dependencies
-basecoin-store = { version = "0.2.0" }
+basecoin-store = { path = "../../basecoin-rs/basecoin/store" }
 
 # cosmos dependencies
 tendermint         = { workspace = true }

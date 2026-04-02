@@ -37,6 +37,7 @@ pub enum PacketMsgType {
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[allow(trivial_numeric_casts)]
 #[derive(Clone, Debug)]
 pub enum Receipt {
     Ok,

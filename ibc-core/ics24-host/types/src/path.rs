@@ -754,6 +754,7 @@ impl UpgradeConsensusStatePath {
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[allow(trivial_numeric_casts)]
 /// Sub-paths which are not part of the specification, but are still
 /// useful to represent for parsing purposes.
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]

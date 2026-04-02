@@ -30,6 +30,7 @@ use ibc_proto::ibc::core::client::v1::Height as RawHeight;
     feature = "borsh",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[allow(trivial_numeric_casts)]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 #[derive(Clone, Copy, Debug, Hash, Eq, PartialEq)]
 pub enum TimeoutHeight {

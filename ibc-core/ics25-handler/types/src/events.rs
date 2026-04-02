@@ -24,6 +24,7 @@ const MESSAGE_EVENT: &str = "message";
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[allow(trivial_numeric_casts)]
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum IbcEvent {
     CreateClient(ClientEvents::CreateClient),
@@ -135,6 +136,7 @@ impl IbcEvent {
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[allow(trivial_numeric_casts)]
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum MessageEvent {
     Client,

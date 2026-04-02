@@ -28,6 +28,7 @@ use crate::error::ChannelError;
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[allow(trivial_numeric_casts)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Copy, Debug, Hash, Eq, PartialEq)]
 pub enum TimeoutTimestamp {
