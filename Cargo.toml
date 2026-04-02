@@ -105,6 +105,7 @@ ibc-client-wasm-types       = { version = "0.57.0", path = "./ibc-clients/ics08-
 ibc-app-transfer-types      = { version = "0.57.0", path = "./ibc-apps/ics20-transfer/types", default-features = false }
 ibc-app-nft-transfer-types  = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer/types", default-features = false }
 
+#ibc-proto = {path = "../ibc-proto-rs", default-features = false}
 ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", default-features = false}
 
 # cosmos dependencies
@@ -126,3 +127,9 @@ tendermint-testgen = { git = "https://github.com/permissionlessweb/tendermint-rs
 # parity dependencies
 parity-scale-codec = { version = "3.6.12", default-features = false, features = [ "derive" ] }
 scale-info         = { version = "2.11.3", default-features = false }
+
+[patch.crates-io]
+ics23 = { git = "https://github.com/permissionlessweb/ics23"}
+
+#[patch."https://github.com/permissionlessweb/ics23"]
+#ics23 = { path = "../ics23/rust" }``
