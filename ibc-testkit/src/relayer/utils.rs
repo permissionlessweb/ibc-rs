@@ -1,7 +1,6 @@
 use alloc::string::String;
 use core::marker::PhantomData;
 use core::time::Duration;
-use std::println;
 
 use ibc::core::channel::types::acknowledgement::Acknowledgement;
 use ibc::core::channel::types::channel::Order;
@@ -350,8 +349,7 @@ where
             proof_consensus_state_of_a: None,
         }));
 
-        let res = ctx_a.deliver(msg_for_a);
-        println!("{:#?}",res);
+        let res = ctx_a.deliver(msg_for_a);;
         res.expect("success");
 
         let Some(IbcEvent::OpenAckConnection(_)) = ctx_a.ibc_store().events.lock().last().cloned()
