@@ -33,7 +33,7 @@ ibc-proto = { workspace = true }
 ibc-query = { workspace = true }
 
 # basecoin dependencies
-basecoin-store = { path = "../../basecoin-rs/basecoin/store" }
+basecoin-store = { git = "https://github.com/permissionlessweb/basecoin-rs" }
 
 # cosmos dependencies
 tendermint         = { workspace = true }
@@ -77,4 +77,4 @@ parity-scale-codec = [
 ]
 
 [patches.crates-io]
-basecoin-store = { path = "../../basecoin-rs/basecoin/store" }
+basecoin-store = { git = "https://github.com/permissionlessweb/basecoin-rs" }
