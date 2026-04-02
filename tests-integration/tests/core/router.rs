@@ -44,6 +44,7 @@ use ibc_testkit::testapp::ibc::clients::mock::header::MockHeader;
 use ibc_testkit::testapp::ibc::core::router::MockRouter;
 use test_log::test;
 
+
 #[test]
 /// These tests exercise two main paths: (1) the ability of the ICS26 routing module to dispatch
 /// messages to the correct module handler, and more importantly: (2) the ability of ICS handlers
@@ -205,7 +206,7 @@ fn routing_module_and_keepers() {
     );
     let client_id = match client_id_event.unwrap() {
         IbcEvent::CreateClient(create_client) => create_client.client_id().clone(),
-        event => panic!("unexpected IBC event: {:?}", event),
+        event => self::panic!("unexpected IBC event: {:?}", event),
     };
 
     let tests: Vec<Test> = vec![
