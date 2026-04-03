@@ -2,134 +2,119 @@
 resolver = "2"
 # members sorted by publishing order to `crates.io`
 members = [
-  "ibc-derive",
-  "ibc-primitives",
-  "ibc-core/ics24-host/types",
-  "ibc-core/ics26-routing/types",
-  "ibc-core/ics23-commitment/types",
-  "ibc-core/ics02-client/types",
-  "ibc-core/ics03-connection/types",
-  "ibc-core/ics04-channel/types",
-  "ibc-core/ics25-handler/types",
-  "ibc-core/ics02-client/context",
-  "ibc-core/ics24-host",
-  "ibc-core/ics26-routing",
-  "ibc-core/ics02-client",
-  "ibc-core/ics03-connection",
-  "ibc-core/ics04-channel",
-  "ibc-core/ics25-handler",
-  "ibc-core",
-  "ibc-clients/ics07-tendermint/types",
-  "ibc-clients/ics07-tendermint",
-  "ibc-clients/ics08-wasm/types",
-  "ibc-clients",
-  "ibc-apps/ics20-transfer/types",
-  "ibc-apps/ics20-transfer",
-  "ibc-apps/ics721-nft-transfer/types",
-  "ibc-apps/ics721-nft-transfer",
-  "ibc-apps",
-  "ibc-core/ics24-host/cosmos",
-  "ibc-data-types",
-  "ibc",
-  "ibc-query",
-  "ibc-testkit",
-
-  # internal crates that are not published
-  "tests-integration",
+    "ibc",
+    "ibc-apps",
+    "ibc-apps/ics20-transfer",
+    "ibc-apps/ics20-transfer/types",
+    "ibc-apps/ics721-nft-transfer",
+    "ibc-apps/ics721-nft-transfer/types",
+    "ibc-clients",
+    "ibc-clients/ics07-tendermint",
+    "ibc-clients/ics07-tendermint/types",
+    "ibc-clients/ics08-wasm/types",
+    "ibc-core",
+    "ibc-core/ics02-client",
+    "ibc-core/ics02-client/context",
+    "ibc-core/ics02-client/types",
+    "ibc-core/ics03-connection",
+    "ibc-core/ics03-connection/types",
+    "ibc-core/ics04-channel",
+    "ibc-core/ics04-channel/types",
+    "ibc-core/ics23-commitment/types",
+    "ibc-core/ics24-host",
+    "ibc-core/ics24-host/cosmos",
+    "ibc-core/ics24-host/types",
+    "ibc-core/ics25-handler",
+    "ibc-core/ics25-handler/types",
+    "ibc-core/ics26-routing",
+    "ibc-core/ics26-routing/types",
+    "ibc-data-types",
+    "ibc-derive",
+    "ibc-primitives",
+    "ibc-query",
+    "ibc-testkit",
+    # internal crates that are not published
+    "tests-integration",
 ]
 
-exclude = [
-  "ci/cw-check",
-  "ci/no-std-check",
-]
+exclude = ["ci/cw-check", "ci/no-std-check"]
 
 [workspace.package]
 version      = "0.57.0"
 license      = "Apache-2.0"
-edition      = "2021"
-rust-version = "1.79.0"
+edition      = "2024"
+rust-version = "1.88.0"
 readme       = "README.md"
 repository   = "https://github.com/cosmos/ibc-rs"
-authors      = [ "Informal Systems <hello@informal.systems>" ]
+authors      = ["Informal Systems <hello@informal.systems>"]
 
 [workspace.dependencies]
 # external dependencies
-arbitrary       = { version = "1.4", features = [ "derive" ] }
+arbitrary       = { version = "1.4", features = ["derive"] }
 base64          = { version = "0.22", default-features = false }
-borsh           = { version = "1", default-features = false, features = [ "derive" ] }
+
+basecoin-store  = { path = "../basecoin-rs/basecoin/store" }
+borsh           = { version = "1", default-features = false, features = ["derive"] }
+derive_more     = { version = "1.0.0", default-features = false, features = ["from", "into", "display", "try_into"] }
 displaydoc      = { version = "0.2.5", default-features = false }
-prost           = { version = "0.14", default-features = false }
-derive_more     = { version = "1.0.0", default-features = false, features = [ "from", "into", "display", "try_into" ] }
-rstest          = { version = "0.24" }
-schemars        = { version = "0.8.21" }
-sha2            = { version = "0.10.8", default-features = false }
-serde           = { version = "1.0", default-features = false }
-serde-json      = { package = "serde-json-wasm", version = "1.0.1", default-features = false }
-subtle-encoding = { version = "0.5", default-features = false }
 hex             = { version = "0.4.3", default-features = false }
 
 # ibc dependencies
 ibc            = { version = "0.57.0", path = "./ibc", default-features = false }
-ibc-core       = { version = "0.57.0", path = "./ibc-core", default-features = false }
-ibc-clients    = { version = "0.57.0", path = "./ibc-clients", default-features = false }
-ibc-apps       = { version = "0.57.0", path = "./ibc-apps", default-features = false }
-ibc-primitives = { version = "0.57.0", path = "./ibc-primitives", default-features = false }
-ibc-testkit    = { version = "0.57.0", path = "./ibc-testkit", default-features = false }
-
-ibc-derive = { version = "0.10.1", path = "./ibc-derive" }
-
-ibc-core-client     = { version = "0.57.0", path = "./ibc-core/ics02-client", default-features = false }
-ibc-core-connection = { version = "0.57.0", path = "./ibc-core/ics03-connection", default-features = false }
-ibc-core-channel    = { version = "0.57.0", path = "./ibc-core/ics04-channel", default-features = false }
-ibc-core-host       = { version = "0.57.0", path = "./ibc-core/ics24-host", default-features = false }
-ibc-core-handler    = { version = "0.57.0", path = "./ibc-core/ics25-handler", default-features = false }
-ibc-core-router     = { version = "0.57.0", path = "./ibc-core/ics26-routing", default-features = false }
-ibc-query           = { version = "0.57.0", path = "./ibc-query", default-features = false }
-
-ibc-client-tendermint = { version = "0.57.0", path = "./ibc-clients/ics07-tendermint", default-features = false }
+ibc-app-nft-transfer = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer", default-features = false }
+ibc-app-nft-transfer-types  = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer/types", default-features = false }
 
 ibc-app-transfer     = { version = "0.57.0", path = "./ibc-apps/ics20-transfer", default-features = false }
-ibc-app-nft-transfer = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer", default-features = false }
+ibc-app-transfer-types      = { version = "0.57.0", path = "./ibc-apps/ics20-transfer/types", default-features = false }
+ibc-apps       = { version = "0.57.0", path = "./ibc-apps", default-features = false }
+
+ibc-client-tendermint = { version = "0.57.0", path = "./ibc-clients/ics07-tendermint", default-features = false }
+ibc-client-tendermint-types = { version = "0.57.0", path = "./ibc-clients/ics07-tendermint/types", default-features = false }
+ibc-client-wasm-types       = { version = "0.57.0", path = "./ibc-clients/ics08-wasm/types", default-features = false }
+ibc-clients    = { version = "0.57.0", path = "./ibc-clients", default-features = false }
+ibc-core       = { version = "0.57.0", path = "./ibc-core", default-features = false }
+ibc-core-channel    = { version = "0.57.0", path = "./ibc-core/ics04-channel", default-features = false }
+ibc-core-channel-types      = { version = "0.57.0", path = "./ibc-core/ics04-channel/types", default-features = false }
+
+ibc-core-client     = { version = "0.57.0", path = "./ibc-core/ics02-client", default-features = false }
 
 ibc-core-client-context     = { version = "0.57.0", path = "./ibc-core/ics02-client/context", default-features = false }
 ibc-core-client-types       = { version = "0.57.0", path = "./ibc-core/ics02-client/types", default-features = false }
-ibc-core-channel-types      = { version = "0.57.0", path = "./ibc-core/ics04-channel/types", default-features = false }
-ibc-core-connection-types   = { version = "0.57.0", path = "./ibc-core/ics03-connection/types", default-features = false }
 ibc-core-commitment-types   = { version = "0.57.0", path = "./ibc-core/ics23-commitment/types", default-features = false }
+ibc-core-connection = { version = "0.57.0", path = "./ibc-core/ics03-connection", default-features = false }
+ibc-core-connection-types   = { version = "0.57.0", path = "./ibc-core/ics03-connection/types", default-features = false }
+ibc-core-handler    = { version = "0.57.0", path = "./ibc-core/ics25-handler", default-features = false }
+ibc-core-handler-types      = { version = "0.57.0", path = "./ibc-core/ics25-handler/types", default-features = false }
+ibc-core-host       = { version = "0.57.0", path = "./ibc-core/ics24-host", default-features = false }
 ibc-core-host-cosmos        = { version = "0.57.0", path = "./ibc-core/ics24-host/cosmos", default-features = false }
 ibc-core-host-types         = { version = "0.57.0", path = "./ibc-core/ics24-host/types", default-features = false }
-ibc-core-handler-types      = { version = "0.57.0", path = "./ibc-core/ics25-handler/types", default-features = false }
+ibc-core-router     = { version = "0.57.0", path = "./ibc-core/ics26-routing", default-features = false }
 ibc-core-router-types       = { version = "0.57.0", path = "./ibc-core/ics26-routing/types", default-features = false }
-ibc-client-tendermint-types = { version = "0.57.0", path = "./ibc-clients/ics07-tendermint/types", default-features = false }
-ibc-client-wasm-types       = { version = "0.57.0", path = "./ibc-clients/ics08-wasm/types", default-features = false }
-ibc-app-transfer-types      = { version = "0.57.0", path = "./ibc-apps/ics20-transfer/types", default-features = false }
-ibc-app-nft-transfer-types  = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer/types", default-features = false }
 
-#ibc-proto = {path = "../ibc-proto-rs", default-features = false}
-ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", default-features = false}
+ibc-derive = { version = "0.10.1", path = "./ibc-derive" }
+ibc-primitives = { version = "0.57.0", path = "./ibc-primitives", default-features = false }
 
-# cosmos dependencies
-# tendermint                       = { version = "0.40.0", default-features = false }
-# tendermint-light-client          = { version = "0.40.0", default-features = false }
-# tendermint-light-client-verifier = { version = "0.40.0", default-features = false }
-# tendermint-proto                 = { version = "0.40.0", default-features = false }
-# tendermint-rpc                   = { version = "0.40.0", default-features = false }
-# tendermint-testgen               = { version = "0.40.0", default-features = false }
-
-tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", features = ["secp256k1"]}
-tendermint-light-client = { git = "https://github.com/permissionlessweb/tendermint-rs"}
-tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs"}
-tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs"}
-tendermint-rpc = { git = "https://github.com/permissionlessweb/tendermint-rs", default-features = false}
-tendermint-testgen = { git = "https://github.com/permissionlessweb/tendermint-rs"}
-
+ibc-proto = { path = "../ibc-proto-rs", default-features = false }
+ibc-query           = { version = "0.57.0", path = "./ibc-query", default-features = false }
+ibc-testkit    = { version = "0.57.0", path = "./ibc-testkit", default-features = false }
 
 # parity dependencies
-parity-scale-codec = { version = "3.6.12", default-features = false, features = [ "derive" ] }
+parity-scale-codec = { version = "3.6.12", default-features = false, features = ["derive"] }
+prost           = { version = "0.14", default-features = false }
+rstest          = { version = "0.24" }
 scale-info         = { version = "2.11.3", default-features = false }
+schemars        = { version = "0.8.21" }
+serde           = { version = "1.0", default-features = false }
+serde-json      = { package = "serde-json-wasm", version = "1.0.1", default-features = false }
+sha2            = { version = "0.10.8", default-features = false }
+subtle-encoding = { version = "0.5", default-features = false }
 
-[patch.crates-io]
-ics23 = { git = "https://github.com/permissionlessweb/ics23"}
+# cosmos dependencies
+tendermint                       = { path = "../tendermint-rs/tendermint", default-features = false, features = ["secp256k1"] }
+tendermint-light-client          = { path = "../tendermint-rs/light-client", default-features = false }
+tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier", default-features = false }
+tendermint-proto                 = { path = "../tendermint-rs/proto", default-features = false }
+tendermint-rpc                   = { path = "../tendermint-rs/rpc", default-features = false }
+tendermint-testgen               = { path = "../tendermint-rs/testgen", default-features = false }
+ics23                            = { path = "../ics23/rust", default-features = false, features = ["host-functions"] }
 
-#[patch."https://github.com/permissionlessweb/ics23"]
-#ics23 = { path = "../ics23/rust" }``

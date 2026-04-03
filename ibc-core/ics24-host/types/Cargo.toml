@@ -6,7 +6,7 @@ edition      = { workspace = true }
 rust-version = { workspace = true }
 license      = { workspace = true }
 repository   = { workspace = true }
-keywords     = [ "blockchain", "cosmos", "ibc", "host", "types" ]
+keywords     = ["blockchain", "cosmos", "ibc", "host", "types"]
 readme       = "./../../README.md"
 
 description = """
@@ -18,6 +18,19 @@ description = """
 [package.metadata.docs.rs]
 all-features = true
 
+[features]
+default = ["std"]
+std = ["displaydoc/std", "ibc-primitives/std"]
+serde = ["dep:serde", "ibc-primitives/serde"]
+schema = ["dep:schemars", "ibc-primitives/schema", "serde", "std"]
+borsh = ["dep:borsh", "ibc-primitives/borsh"]
+parity-scale-codec = [
+    "dep:parity-scale-codec",
+    "dep:scale-info",
+    "ibc-primitives/parity-scale-codec",
+]
+arbitrary = ["dep:arbitrary", "ibc-primitives/arbitrary", "std"]
+
 [dependencies]
 # external dependencies
 arbitrary   = { workspace = true, optional = true }
@@ -25,44 +38,17 @@ base64      = { workspace = true }
 borsh       = { workspace = true, optional = true }
 derive_more = { workspace = true }
 displaydoc  = { workspace = true }
-prost       = { workspace = true }
-schemars    = { workspace = true, optional = true }
-serde       = { workspace = true, optional = true }
 
 # ibc dependencies
 ibc-primitives = { workspace = true }
 
 # parity dependencies
 parity-scale-codec = { workspace = true, optional = true }
+prost       = { workspace = true }
 scale-info         = { workspace = true, optional = true }
+schemars    = { workspace = true, optional = true }
+serde       = { workspace = true, optional = true }
 
 [dev-dependencies]
 rstest     = { workspace = true }
 serde-json = { workspace = true }
-
-[features]
-default = [ "std" ]
-std = [
-  "displaydoc/std",
-  "ibc-primitives/std",
-]
-serde = [
-  "dep:serde",
-  "ibc-primitives/serde",
-]
-schema = [
-  "dep:schemars",
-  "ibc-primitives/schema",
-  "serde",
-  "std",
-]
-borsh = [
-  "dep:borsh",
-  "ibc-primitives/borsh",
-]
-parity-scale-codec = [
-  "dep:parity-scale-codec",
-  "dep:scale-info",
-  "ibc-primitives/parity-scale-codec",
-]
-arbitrary = [ "dep:arbitrary", "ibc-primitives/arbitrary", "std" ]

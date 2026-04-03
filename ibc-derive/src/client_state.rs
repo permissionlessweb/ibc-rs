@@ -117,9 +117,9 @@ fn split_for_impl(
     let mut generics = vec![];
     let mut predicates = vec![];
 
-    if let syn::PathArguments::AngleBracketed(gen) = args {
-        generics.reserve_exact(gen.args.len());
-        for arg in gen.args {
+    if let syn::PathArguments::AngleBracketed(r#gen) = args {
+        generics.reserve_exact(r#gen.args.len());
+        for arg in r#gen.args {
             match arg.clone() {
                 GenericArgument::Type(_) | GenericArgument::Lifetime(_) => {
                     generics.push(arg);
@@ -127,9 +127,9 @@ fn split_for_impl(
                 GenericArgument::Constraint(c) => {
                     let ident = c.ident.into_token_stream();
 
-                    let gen = syn::parse2(ident.into_token_stream())?;
+                    let r#gen = syn::parse2(ident.into_token_stream())?;
 
-                    generics.push(gen);
+                    generics.push(r#gen);
 
                     let gen_type_param: syn::TypeParam =
                         syn::parse2(arg.clone().into_token_stream())?;

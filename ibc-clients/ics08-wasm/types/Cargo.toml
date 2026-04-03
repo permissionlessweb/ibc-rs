@@ -6,7 +6,7 @@ edition      = { workspace = true }
 rust-version = { workspace = true }
 license      = { workspace = true }
 repository   = { workspace = true }
-keywords     = [ "blockchain", "cosmos", "ibc", "wasm", "ics08" ]
+keywords     = ["blockchain", "cosmos", "ibc", "wasm", "ics08"]
 readme       = "./../../README.md"
 
 description = """
@@ -15,46 +15,46 @@ description = """
     to facilitate development and integration across diverse IBC-enabled projects.
 """
 
+[features]
+default = ["std"]
+std = [
+    "ibc-core-client/std",
+    "ibc-core-host-types/std",
+    "ibc-primitives/std",
+    "ibc-proto/std",
+    "base64/std",
+    "serde/std",
+]
+serde = [
+    "ibc-core-client/serde",
+    "ibc-core-host-types/serde",
+    "ibc-primitives/serde",
+    "ibc-proto/serde",
+    "dep:serde",
+]
+schema = [
+    "ibc-core-client/schema",
+    "ibc-core-host-types/schema",
+    "ibc-primitives/schema",
+    "ibc-proto/json-schema",
+    "schemars",
+    "serde",
+    "std",
+]
+
 [dependencies]
 # external dependencies
-base64     = { workspace = true, features = [ "alloc" ] }
+base64     = { workspace = true, features = ["alloc"] }
 displaydoc = { workspace = true }
-schemars   = { workspace = true, optional = true }
-serde      = { workspace = true, optional = true }
 
 # ibc dependencies
 ibc-core-client     = { workspace = true }
 ibc-core-host-types = { workspace = true }
 ibc-primitives      = { workspace = true }
 ibc-proto           = { workspace = true }
+schemars   = { workspace = true, optional = true }
+serde      = { workspace = true, optional = true }
 
 [dev-dependencies]
 rstest     = { workspace = true }
 serde-json = { workspace = true }
-
-[features]
-default = [ "std" ]
-std = [
-  "ibc-core-client/std",
-  "ibc-core-host-types/std",
-  "ibc-primitives/std",
-  "ibc-proto/std",
-  "base64/std",
-  "serde/std",
-]
-serde = [
-  "ibc-core-client/serde",
-  "ibc-core-host-types/serde",
-  "ibc-primitives/serde",
-  "ibc-proto/serde",
-  "dep:serde",
-]
-schema = [
-  "ibc-core-client/schema",
-  "ibc-core-host-types/schema",
-  "ibc-primitives/schema",
-  "ibc-proto/json-schema",
-  "schemars",
-  "serde",
-  "std",
-]

@@ -6,7 +6,7 @@ edition      = { workspace = true }
 rust-version = { workspace = true }
 license      = { workspace = true }
 repository   = { workspace = true }
-keywords     = [ "cosmos", "ibc", "nft", "transfer", "ics721" ]
+keywords     = ["cosmos", "ibc", "nft", "transfer", "ics721"]
 readme       = "./../README.md"
 
 description = """
@@ -18,38 +18,22 @@ description = """
 [package.metadata.docs.rs]
 all-features = true
 
+[features]
+default = ["std"]
+std = ["ibc-app-nft-transfer-types/std", "ibc-core/std", "serde-json/std"]
+serde = ["ibc-app-nft-transfer-types/serde", "ibc-core/serde", "dep:serde-json"]
+schema = ["ibc-app-nft-transfer-types/schema", "ibc-core/schema", "serde", "std"]
+borsh = ["ibc-app-nft-transfer-types/borsh", "ibc-core/borsh"]
+parity-scale-codec = [
+    "ibc-app-nft-transfer-types/parity-scale-codec",
+    "ibc-core/parity-scale-codec",
+]
+arbitrary = ["ibc-app-nft-transfer-types/arbitrary", "ibc-core/arbitrary"]
+
 [dependencies]
-# external dependencies
-serde-json = { workspace = true, optional = true }
 
 # ibc dependencies
 ibc-app-nft-transfer-types = { workspace = true }
 ibc-core                   = { workspace = true }
-
-[features]
-default = [ "std" ]
-std = [
-  "ibc-app-nft-transfer-types/std",
-  "ibc-core/std",
-  "serde-json/std",
-]
-serde = [
-  "ibc-app-nft-transfer-types/serde",
-  "ibc-core/serde",
-  "dep:serde-json",
-]
-schema = [
-  "ibc-app-nft-transfer-types/schema",
-  "ibc-core/schema",
-  "serde",
-  "std",
-]
-borsh = [
-  "ibc-app-nft-transfer-types/borsh",
-  "ibc-core/borsh",
-]
-parity-scale-codec = [
-  "ibc-app-nft-transfer-types/parity-scale-codec",
-  "ibc-core/parity-scale-codec",
-]
-arbitrary = [ "ibc-app-nft-transfer-types/arbitrary", "ibc-core/arbitrary" ]
+# external dependencies
+serde-json = { workspace = true, optional = true }

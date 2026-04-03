@@ -206,7 +206,7 @@ fn routing_module_and_keepers() {
     );
     let client_id = match client_id_event.unwrap() {
         IbcEvent::CreateClient(create_client) => create_client.client_id().clone(),
-        event => self::panic!("unexpected IBC event: {:?}", event),
+        event =>  self::panic!("unexpected IBC event: {:?}", event),
     };
 
     let tests: Vec<Test> = vec![

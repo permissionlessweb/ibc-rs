@@ -239,8 +239,8 @@ impl schemars::JsonSchema for DataValue {
         std::borrow::Cow::Borrowed(concat!(module_path!(), "::DataValue"))
     }
 
-    fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
-        gen.subschema_for::<Self>()
+    fn json_schema(r#gen: &mut schemars::r#gen::SchemaGenerator) -> schemars::schema::Schema {
+        r#gen.subschema_for::<Self>()
     }
 }
 

@@ -7,46 +7,46 @@ edition      = { workspace = true }
 rust-version = { workspace = true }
 repository   = { workspace = true }
 readme       = "README.md"
-keywords     = [ "blockchain", "consensus", "cosmos", "ibc", "tendermint" ]
+keywords     = ["blockchain", "consensus", "cosmos", "ibc", "tendermint"]
 publish      = false
 description  = "Integration tests using `ibc-testkit` and the other IBC crates."
 
+[features]
+default = ["std"]
+std = [
+    "serde/std",
+    "serde-json/std",
+    "ibc/std",
+    "ibc/serde",
+    "ibc-testkit/serde",
+    "tendermint/std",
+]
+
 [dependencies]
-# external dependencies
-serde           = { workspace = true, optional = true }
-serde-json      = { workspace = true, optional = true }
-subtle-encoding = { workspace = true }
-tracing         = { version = "0.1.40", default-features = false }
+
+# basecoin dependencies
+basecoin-store = { workspace = true }
 
 # ibc dependencies
 ibc                         = { workspace = true }
+ibc-client-tendermint-types = { workspace = true }
 ibc-core-client-types       = { workspace = true }
 ibc-core-commitment-types   = { workspace = true }
-ibc-client-tendermint-types = { workspace = true }
 ibc-core-host-types         = { workspace = true }
 ibc-primitives              = { workspace = true }
 ibc-query                   = { workspace = true }
 ibc-testkit                 = { workspace = true }
-
-# basecoin dependencies
-basecoin-store = { git = "https://github.com/permissionlessweb/basecoin-rs" }
+# external dependencies
+serde           = { workspace = true, optional = true }
+serde-json      = { workspace = true, optional = true }
+subtle-encoding = { workspace = true }
 
 # cosmos dependencies
 tendermint         = { workspace = true }
 tendermint-testgen = { workspace = true }
+tracing         = { version = "0.1.40", default-features = false }
 
 [dev-dependencies]
 rstest         = { workspace = true }
-test-log       = { version = "0.2.16", features = [ "trace" ] }
 tendermint-rpc = { workspace = true }
-
-[features]
-default = [ "std" ]
-std = [
-  "serde/std",
-  "serde-json/std",
-  "ibc/std",
-  "ibc/serde",
-  "ibc-testkit/serde",
-  "tendermint/std",
-]
+test-log       = { version = "0.2.16", features = ["trace"] }

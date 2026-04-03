@@ -6,7 +6,7 @@ edition      = { workspace = true }
 rust-version = { workspace = true }
 license      = { workspace = true }
 repository   = { workspace = true }
-keywords     = [ "blockchain", "cosmos", "ibc", "transfer", "ics20" ]
+keywords     = ["blockchain", "cosmos", "ibc", "transfer", "ics20"]
 readme       = "./../../README.md"
 
 description = """
@@ -18,16 +18,34 @@ description = """
 [package.metadata.docs.rs]
 all-features = true
 
+[features]
+default = ["std"]
+std = [
+    "serde/std",
+    "serde-json/std",
+    "displaydoc/std",
+    "uint/std",
+    "primitive-types/std",
+    "ibc-core/std",
+    "ibc-proto/std",
+]
+serde = ["dep:serde", "ibc-core/serde", "ibc-proto/serde"]
+schema = ["dep:schemars", "ibc-core/schema", "ibc-proto/json-schema", "serde", "std"]
+borsh = ["dep:borsh", "ibc-core/borsh", "ibc-proto/borsh"]
+parity-scale-codec = [
+    "dep:parity-scale-codec",
+    "dep:scale-info",
+    "ibc-core/parity-scale-codec",
+    "ibc-proto/parity-scale-codec",
+]
+arbitrary = ["dep:arbitrary", "ibc-core/arbitrary", "std"]
+
 [dependencies]
 # external dependencies
 arbitrary       = { workspace = true, optional = true }
 borsh           = { workspace = true, optional = true }
 derive_more     = { workspace = true }
 displaydoc      = { workspace = true }
-primitive-types = { version = "0.13.1", default-features = false, features = [ "serde_no_std" ] }
-schemars        = { workspace = true, optional = true }
-serde           = { workspace = true, optional = true }
-uint            = { version = "0.10", default-features = false }
 
 # ibc dependencies
 ibc-core  = { workspace = true }
@@ -35,44 +53,12 @@ ibc-proto = { workspace = true }
 
 ## parity dependencies
 parity-scale-codec = { workspace = true, optional = true }
+primitive-types = { version = "0.13.1", default-features = false, features = ["serde_no_std"] }
 scale-info         = { workspace = true, optional = true }
+schemars        = { workspace = true, optional = true }
+serde           = { workspace = true, optional = true }
+uint            = { version = "0.10", default-features = false }
 
 [dev-dependencies]
-serde-json = { workspace = true }
 rstest     = { workspace = true }
-
-[features]
-default = [ "std" ]
-std = [
-  "serde/std",
-  "serde-json/std",
-  "displaydoc/std",
-  "uint/std",
-  "primitive-types/std",
-  "ibc-core/std",
-  "ibc-proto/std",
-]
-serde = [
-  "dep:serde",
-  "ibc-core/serde",
-  "ibc-proto/serde",
-]
-schema = [
-  "dep:schemars",
-  "ibc-core/schema",
-  "ibc-proto/json-schema",
-  "serde",
-  "std",
-]
-borsh = [
-  "dep:borsh",
-  "ibc-core/borsh",
-  "ibc-proto/borsh",
-]
-parity-scale-codec = [
-  "dep:parity-scale-codec",
-  "dep:scale-info",
-  "ibc-core/parity-scale-codec",
-  "ibc-proto/parity-scale-codec",
-]
-arbitrary = [ "dep:arbitrary", "ibc-core/arbitrary", "std" ]
+serde-json = { workspace = true }
