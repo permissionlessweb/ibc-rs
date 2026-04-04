@@ -60,7 +60,7 @@ displaydoc      = { version = "0.2.5", default-features = false }
 hex             = { version = "0.4.3", default-features = false }
 
 # ibc dependencies
-ibc = { git = "https://github.com/permissionlessweb/ibc-rs", branch = "main" }
+ibc = { version = "0.57.0", path = "ibc", default-features = false }
 ibc-app-nft-transfer = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer", default-features = false }
 ibc-app-nft-transfer-types  = { version = "0.57.0", path = "./ibc-apps/ics721-nft-transfer/types", default-features = false }
 
@@ -96,7 +96,7 @@ ibc-primitives = { version = "0.57.0", path = "./ibc-primitives", default-featur
 
 ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", branch = "main" }
 ibc-query           = { version = "0.57.0", path = "./ibc-query", default-features = false }
-ibc-testkit = { git = "https://github.com/permissionlessweb/ibc-rs", branch = "main" }
+ibc-testkit = { version = "0.57.0", path = "ibc-testkit", default-features = false }
 
 # parity dependencies
 parity-scale-codec = { version = "3.6.12", default-features = false, features = ["derive"] }
