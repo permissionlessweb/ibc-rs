@@ -102,7 +102,7 @@ ibc-testkit    = { version = "0.57.0", path = "./ibc-testkit", default-features 
 parity-scale-codec = { version = "3.6.12", default-features = false, features = ["derive"] }
 prost           = { version = "0.14", default-features = false }
 rstest          = { version = "0.24" }
-scale-info         = { version = "2.11.3", default-features = false }
+scale-info         = { version = "2.11.6", default-features = false }
 schemars        = { version = "0.8.21" }
 serde           = { version = "1.0", default-features = false }
 serde-json      = { package = "serde-json-wasm", version = "1.0.1", default-features = false }
