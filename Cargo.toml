@@ -53,7 +53,7 @@ authors      = ["Informal Systems <hello@informal.systems>"]
 arbitrary       = { version = "1.4", features = ["derive"] }
 base64          = { version = "0.22", default-features = false }
 
-basecoin-store  = { path = "../basecoin-rs/basecoin/store" }
+basecoin-store  = { git = "https://github.com/permissionlessweb/basecoin-rs", branch = "main" }
 borsh           = { version = "1", default-features = false, features = ["derive"] }
 derive_more     = { version = "1.0.0", default-features = false, features = ["from", "into", "display", "try_into"] }
 displaydoc      = { version = "0.2.5", default-features = false }
@@ -112,9 +112,9 @@ subtle-encoding = { version = "0.5", default-features = false }
 # cosmos dependencies
 tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 tendermint-light-client = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
-tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier", default-features = false }
+tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main", default-features = false }
 tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 tendermint-rpc = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
-tendermint-testgen               = { path = "../tendermint-rs/testgen", default-features = false }
+tendermint-testgen               = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main", default-features = false }
 ics23 = { git = "https://github.com/permissionlessweb/ics23", branch = "stable" }
 
