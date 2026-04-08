@@ -5,11 +5,11 @@ edition  = "2021"
 resolver = "2"
 
 [dependencies]
-ibc = { path = "../../ibc", default-features = false, features = ["serde"] }
-ibc-proto = { path = "../../../ibc-proto-rs", default-features = false, features = ["borsh", "parity-scale-codec", "serde"] }
-tendermint = { path = "../../../tendermint-rs/tendermint", default-features = false }
-tendermint-proto = { path = "../../../tendermint-rs/proto" }
-tendermint-light-client-verifier = { path = "../../../tendermint-rs/light-client-verifier", default-features = false, features = ["rust-crypto"] }
+ibc = { git = "https://github.com/permissionlessweb/ibc-rs", branch = "zk-mvp", default-features = false, features = ["serde"] }
+ibc-proto = { git = "https://github.com/permissionlessweb/ibc-proto-rs", branch = "zk-mvp", default-features = false, features = ["borsh", "parity-scale-codec", "serde"] }
+tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp", default-features = false }
+tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp", default-features = false, features = ["rust-crypto"] }
 
 sp-core    = { version = "34.0", default-features = false, optional = true }
 sp-io      = { version = "37.0", default-features = false, optional = true }
