@@ -5,15 +5,11 @@ edition  = "2021"
 resolver = "2"
 
 [dependencies]
-ibc = { path = "../../ibc", default-features = false, features = [ "serde" ] }
-ibc-proto = { path = "../ibc-proto-rs", default-features = false, features = [
-  "parity-scale-codec",
-  "borsh",
-  "serde",
-] }
-tendermint = { path = "../tendermint-rs/tendermint", default-features = false }
-tendermint-proto = { path = "../tendermint-rs/proto" }
-tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier", default-features = false, features = [ "rust-crypto" ] }
+ibc = { path = "../../ibc", default-features = false, features = ["serde"] }
+ibc-proto = { path = "../../../ibc-proto-rs", default-features = false, features = ["borsh", "parity-scale-codec", "serde"] }
+tendermint = { path = "../../../tendermint-rs/tendermint", default-features = false }
+tendermint-proto = { path = "../../../tendermint-rs/proto" }
+tendermint-light-client-verifier = { path = "../../../tendermint-rs/light-client-verifier", default-features = false, features = ["rust-crypto"] }
 
 sp-core    = { version = "34.0", default-features = false, optional = true }
 sp-io      = { version = "37.0", default-features = false, optional = true }
